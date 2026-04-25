@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI News Digest — モックアップ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            },
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #f1f5f1; }
+
+    .header-bg {
+      background: linear-gradient(135deg, #052e16 0%, #14532d 50%, #166534 100%);
+    }
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(34,197,94,0.25) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .glow-ring {
+      box-shadow: 0 0 0 1px rgba(34,197,94,0.2), 0 4px 32px rgba(0,0,0,0.10);
+    }
+    .card-hover {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .source-itmedia  { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
+    .source-zenn     { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+    .source-anthropic{ background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+    .source-google   { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+
+    .divider-line {
+      background: linear-gradient(90deg, transparent, rgba(34,197,94,0.35), transparent);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-start justify-center py-12 px-4 font-sans">
+
+  <!-- ===== EMAIL CARD ===== -->
+  <div class="w-full max-w-[600px] rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(34,197,94,0.15)] glow-ring">
+
+    <!-- ── HEADER ── -->
+    <div class="header-bg relative overflow-hidden px-8 pt-10 pb-9">
+      <div class="dot-grid absolute inset-0 opacity-60"></div>
+
+      <!-- glow orbs -->
+      <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full"
+           style="background: radial-gradient(circle, rgba(34,197,94,0.18) 0%, transparent 70%)"></div>
+      <div class="absolute -bottom-20 -left-10 w-56 h-56 rounded-full"
+           style="background: radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 70%)"></div>
+
+      <!-- label -->
+      <div class="relative z-10 flex items-center gap-2 mb-4">
+        <span class="text-[10px] tracking-[0.22em] uppercase text-brand-400 font-mono font-medium">AI News Digest</span>
+        <span class="h-px flex-1 bg-brand-400/30"></span>
+        <span class="text-[10px] text-brand-400/70 font-mono">vol.042</span>
+      </div>
+
+      <!-- title row -->
+      <div class="relative z-10 flex items-end justify-between">
+        <div>
+          <h1 class="text-white text-3xl font-bold tracking-tight leading-none">
+            今日のAIニュース
+          </h1>
+          <p class="text-brand-200/60 text-sm mt-2 font-light">2026年4月25日(土)</p>
+        </div>
+
+        <!-- AI icon badge -->
+        <div class="w-14 h-14 rounded-2xl bg-brand-500/20 border border-brand-400/30 flex items-center justify-center flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- stats bar -->
+      <div class="relative z-10 flex items-center gap-4 mt-6 pt-5 border-t border-white/10">
+        <div class="flex items-center gap-1.5 text-white/50 text-xs">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.966 8.966 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+          <span>3 メディア</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-white/50 text-xs">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <span>10 記事</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NEWS LIST ── -->
+    <div class="bg-[#f8f9ff] px-6 py-6 space-y-3">
+
+      <!-- ── NEWS ITEM 1 (TOP) ── -->
+      <div class="card-hover bg-white rounded-xl border border-brand-200" style="border-left: 4px solid #22c55e; shadow-sm overflow-hidden">
+        <div class="px-5 pt-3 pb-1"><span class="inline-block text-[10px] font-bold tracking-[0.15em] text-brand-700 bg-brand-50 border border-brand-200 rounded px-2 py-0.5 mb-2">TODAY'S TOP</span></div>
+        <div class="px-5 pb-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-itmedia text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">ITmedia AI+</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">5時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">MetaとAWSが提携　エージェント型AI強化に最新のArmベースチップ「Graviton5」を大量採用</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">Metaは、エージェント型AI強化のためAWSと提携し、数千万個の「AWS Graviton」コアを導入する。最新の「Graviton5」を採用し、推論やコード生成、自律タスクの調整などCPU負荷の高</p>
+        </div>
+        <div class="px-5 py-2.5 bg-brand-50 border-brand-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">ITmedia AI+</span>
+          <a href="https://www.itmedia.co.jp/news/articles/2604/25/news024.html" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 2 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-google text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Google AI Blog</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">7時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">8 Gemini tips for organizing your space (and life)</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">Geminiを活用し、生活空間やデジタル環境を整理するためのヒントを紹介。
+掃除スケジュールの作成や受信トレイの整理、季節の家事など、AIが物理的・デジタルの両面で効率的な管理をサポートする内容となっている。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Google AI Blog</span>
+          <a href="https://blog.google/products-and-platforms/products/gemini/gemini-spring-cleaning-tips/" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 3 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">Claude / Codex / ZAI / Ollama の使用量を一画面でまとめて見る「aimo」を作った</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">複数AIサービスの利用制限を一括確認できるダッシュボード「aimo」が登場。Claude、ChatGPT、Ollama等の使用量を一画面で可視化し、ブラウザ拡張やローカル環境から各プロバイダの残量を効率的に把握できる。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/ouchan_ip/articles/aimo-ai-usage-monitor" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 4 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">手を動かして理解する agent harness — Claude Code を Python で作る (基礎編)</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">PythonでClaude Code風のagent harnessを自作し、harness engineeringを学ぶ。blocking APIの観測、tool use、agent loop、trust boundary等の実装を通じ、基盤技術を全8章で詳説する。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/luoxi/books/agent-harness-basic" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 5 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">作りながら理解する agent harness — Claude Code を Python で作る (応用編)</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">基礎編のagent harnessをstreaming化し、MCPやreflection等の機能を実装する全7章の解説書です。context economyやsession永続化を統合し、PythonでClaude Code相当の体験を構築する手法を客観的に詳述しています。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/luoxi/books/agent-harness-advanced" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 6 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">harness engineering を 5 層で整理する — Python で 1 から書いて見えたこと</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">harness engineeringを5層で体系化し、Pythonでの実装を通してその構造を整理した記事です。Claude Code等の既存の実践を言語化し、12-factor agents等の知見に基づいたエージェント構築の指針を提示しています。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/luoxi/articles/harness-engineering-everyday" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 7 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">🚀 AIエディター「Kiro」活用術：CLIからWebへ。AIと挑む「Spec駆動」のアプリコンバート</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">AIエディター「Kiro」を用い、既存のCLIツールをWebアプリへコンバートする開発事例を解説。セッションログを通じて、仕様に基づく「Spec駆動」での指示と、AIによるプロジェクト把握・実装のリアルなプロセスを提示している。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/como/articles/87aad75c2f555c" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 8 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">11時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">AIが自分より2倍長く動いていた。cc-agent-loadで可視化した話</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">cc-session-statsによる可視化で、総稼働時間の約65%をClaudeが自律起動したサブエージェントが占めていると判明しました。AIの稼働時間は人間の約1.9倍に達しており、Taskツールを用いたAI自律運用の実態が浮き彫りになっています。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/yurukusa/articles/6de8f54b2f3c80" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 9 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">11時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">AIコードレビューに&quot;ディフェンス&quot;を入れたら、指摘の質が変わった</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">!
+レビューを試すために、SQLインジェクションやAPIキーの直書きなど、あえて穴のあるコードを用意しています
+
+AIにコードレビューをさせて、返ってきた指摘を眺めながらこう思ったことはないでしょうか</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/nka21/articles/claude-code-multi-agent-reviewer" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── NEWS ITEM 10 ── -->
+      <div class="card-hover bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        
+        <div class="px-5 py-4">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">11時間前</span>
+          </div>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">【実録】AIに決済ステータス更新を任せたら「キャンセルした注文」がゾンビのように蘇った話</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">AI生成コードによる決済APIの実装で、ビジネスロジックの欠落によりキャンセル済み注文が更新される不具合が発生した。一見正常に見えるコードに潜む「仕様の死角」と、バリデーションの実装におけるリスクを指摘している。</p>
+        </div>
+        <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Zenn</span>
+          <a href="https://zenn.dev/hinaena/articles/b0c8b97780be0a" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
+            記事を読む
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <div class="header-bg px-6 py-5 flex items-center justify-between">
+      <div>
+        <p class="text-white/80 text-[12px] font-medium">AI News Digest</p>
+        <p class="text-white/40 text-[11px] mt-0.5">Powered by GitHub Actions</p>
+      </div>
+      <div class="flex items-center gap-1.5 bg-brand-500/20 border border-brand-400/30 rounded-full px-3 py-1.5">
+        <svg class="w-3.5 h-3.5 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-brand-300 text-[11px] font-mono">毎朝 7:00 配信</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
