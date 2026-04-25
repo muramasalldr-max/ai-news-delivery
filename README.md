@@ -2,7 +2,7 @@
 
 最新のAI関連ニュースを毎朝自動で収集・要約し、Gmail に届けるツールです。
 
-RSSフィードから記事を取得し、Gemini API が日本語で要約。毎朝決まった時間に「今日のAIニュース」としてメールに自動配信されます。すべて無料枠で動作します。
+RSSフィードから記事を取得し、Gemini API が日本語で要約。生成したページを GitHub Pages に公開し、毎朝そのURLをメールで通知します。すべて無料枠で動作します。
 
 ---
 
@@ -15,23 +15,16 @@ AI分野の情報は更新が速く、毎日自分でサイトを巡回するの
 ### 配信イメージ
 
 ```
-件名: 【AIニュース】2026年4月24日
+件名: 【AIニュース】2026年4月25日
 
-━━━━━━━━━━━━━━━━━━━━
-📰 1. OpenAI、新モデル「GPT-5」を正式発表
-   → 推論速度が従来比3倍に。APIは来週から順次公開予定。
-   🔗 出典: ITmedia AI+
+今日のAIニュースをまとめました。
 
-📰 2. Claude 3.7 の新機能まとめ
-   → 拡張思考モードが強化。ロングコンテキスト対応も改善。
-   🔗 出典: Anthropic Blog
+👉 https://muramasalldr-max.github.io/ai-news-delivery/
 
-📰 3. Google DeepMind、タンパク質設計AIを医療応用へ
-   → AlphaFold 最新版が希少疾患治療薬の開発に活用される見込み。
-   🔗 出典: Google AI Blog
-
-━━━━━━━━━━━━━━━━━━━━
+5記事 ／ 4メディア
 ```
+
+メールに記載されたURLをタップすると、当日分のニュースページが開く。
 
 ---
 
@@ -42,7 +35,7 @@ AI分野の情報は更新が速く、毎日自分でサイトを巡回するの
 | 1 | トリガー | いつ動かすか | GitHub Actions（cron） |
 | 2 | ソース元 | どこから情報を取るか | RSS フィード（4メディア） |
 | 3 | 実行場所 | どこで処理するか | GitHub Actions |
-| 4 | 配信先 | どこに届けるか | Gmail（自分宛て） |
+| 4 | 配信先 | どこに届けるか | GitHub Pages（ページ公開）+ Gmail（URL通知） |
 
 ---
 
@@ -60,11 +53,14 @@ AI分野の情報は更新が速く、毎日自分でサイトを巡回するの
     ↓
 [パーツ3] 実行場所（GitHub Actions 上で処理）
   Gemini API で各記事を日本語サマリーに変換
-  AI 関連記事を上位3〜5件に絞り込み、メール本文を生成
+  HTMLページ（index.html）を生成
     │
-    ↓
-[パーツ4] 配信先
-  Gmail（nodemailer + Gmail SMTP）で自分宛てにメール送信
+    ├─→ gh-pages ブランチにプッシュ
+    │     └─ GitHub Pages として自動公開
+    │         https://muramasalldr-max.github.io/ai-news-delivery/
+    │
+    └─→ [パーツ4] Gmail（nodemailer + Gmail SMTP）
+          ページURLを本文に記載してメール送信
 ```
 
 ---
@@ -102,22 +98,26 @@ on:
 - `rss-parser` ライブラリで4メディアを並列取得
 - `pubDate` で過去24時間以内の記事のみにフィルタリング
 
-### パーツ3：Gemini API で要約
+### パーツ3：Gemini API で要約 → GitHub Pages に公開
 
 | 項目 | 内容 |
 |---|---|
 | モデル | `gemini-2.0-flash`（無料枠あり） |
 | 無料枠 | 15 リクエスト/分、100万トークン/日 |
 | プロンプト | 記事タイトル＋本文を渡し、2〜3行の日本語サマリーを生成 |
-| コスト | 無料枠内で完結（1日数十件の処理なら超えない） |
+| HTML生成 | Tailwind CSS・Google Fonts をフル活用したページを生成 |
+| デプロイ | `gh-pages` ブランチに `index.html` をプッシュ → 自動公開 |
+| 公開URL | `https://muramasalldr-max.github.io/ai-news-delivery/` （固定） |
 
-### パーツ4：Gmail 送信
+GitHub Pages への push は `peaceiris/actions-gh-pages` アクションを使用。`GITHUB_TOKEN` は Actions に自動付与されるため、追加の Secrets 不要。
+
+### パーツ4：Gmail 通知
 
 | 項目 | 内容 |
 |---|---|
+| 内容 | 当日ページのURL + 記事数・メディア数のみの短いテキスト |
 | 送信方法 | nodemailer + Gmail SMTP（App Password 認証） |
 | 送信先 | 自分の Gmail アドレス |
-| 認証情報 | GitHub Secrets に `GMAIL_USER` と `GMAIL_APP_PASSWORD` を登録 |
 
 ---
 
@@ -128,6 +128,8 @@ on:
 | `GEMINI_API_KEY` | Gemini API のキー | Google AI Studio で無料取得 |
 | `GMAIL_USER` | 送信元の Gmail アドレス | 自分の Gmail |
 | `GMAIL_APP_PASSWORD` | Gmail のアプリパスワード | Google アカウント → セキュリティ → アプリパスワード |
+
+※ GitHub Pages へのデプロイに必要な `GITHUB_TOKEN` は Actions に自動付与されるため登録不要。
 
 ---
 
@@ -142,10 +144,12 @@ ai-news-delivery/
 │   ├── main.js                   ← メインスクリプト（全体制御）
 │   ├── fetch-rss.js              ← RSS フィードから記事取得
 │   ├── summarize.js              ← Gemini API で要約・整形
-│   └── send-mail.js              ← Gmail で送信
+│   ├── generate-html.js          ← index.html 生成
+│   └── send-mail.js              ← Gmail で URL 通知
 ├── package.json
 ├── package-lock.json
 ├── .gitignore
+├── mockup.html                   ← デザインモックアップ
 └── README.md                     ← このファイル
 ```
 
@@ -158,28 +162,32 @@ Phase 1（完了）
   プロジェクト設計・README 作成
   └─ 構成・仕様の確定
 
-Phase 2（予定）
+Phase 2（完了）
+  デザインモックアップ作成
+  └─ mockup.html 完成（Tailwind CSS・グリーン系カラー）
+
+Phase 3（予定）
   RSS フィード取得スクリプト作成
   ├─ rss-parser で4メディアを並列取得
   └─ 過去24時間フィルタリング
 
-Phase 3（予定）
-  Gemini API で要約・整形
-  ├─ 各記事を2〜3行の日本語サマリーに変換
-  └─ メール本文テキストを生成
-
 Phase 4（予定）
-  Gmail 送信スクリプト作成
-  ├─ nodemailer で自分宛てに送信
-  └─ エラーハンドリング追加
+  Gemini API で要約・HTML生成
+  ├─ 各記事を2〜3行の日本語サマリーに変換
+  └─ index.html を生成（mockup.html ベース）
 
 Phase 5（予定）
-  GitHub Actions ワークフロー構築
-  ├─ cron スケジュール設定（毎朝 7:00 JST）
-  └─ Secrets 設定・動作確認
+  GitHub Pages デプロイ設定
+  ├─ gh-pages ブランチへの自動プッシュ
+  └─ GitHub Pages 有効化
 
 Phase 6（予定）
-  チューニング・拡張
-  ├─ 配信メディアの追加・調整
-  └─ HTML メール対応（より見やすいレイアウト）
+  Gmail 通知スクリプト作成
+  ├─ nodemailer でURLを自分宛てに送信
+  └─ エラーハンドリング追加
+
+Phase 7（予定）
+  GitHub Actions ワークフロー構築・動作確認
+  ├─ cron スケジュール設定（毎朝 7:00 JST）
+  └─ Secrets 設定・end-to-end テスト
 ```
