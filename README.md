@@ -102,7 +102,7 @@ on:
 
 | 項目 | 内容 |
 |---|---|
-| モデル | `gemini-2.0-flash`（無料枠あり） |
+| モデル | `gemini-3-flash-preview`（無料枠あり） |
 | 無料枠 | 15 リクエスト/分、100万トークン/日 |
 | プロンプト | 記事タイトル＋本文を渡し、2〜3行の日本語サマリーを生成 |
 | HTML生成 | Tailwind CSS・Google Fonts をフル活用したページを生成 |
@@ -133,7 +133,7 @@ GitHub Pages への push は `peaceiris/actions-gh-pages` アクションを使�
 
 ---
 
-## 7. ファイル構成（予定）
+## 7. ファイル構成
 
 ```
 ai-news-delivery/
@@ -166,27 +166,27 @@ Phase 2（完了）
   デザインモックアップ作成
   └─ mockup.html 完成（Tailwind CSS・グリーン系カラー）
 
-Phase 3（予定）
+Phase 3（完了）
   RSS フィード取得スクリプト作成
   ├─ rss-parser で4メディアを並列取得
   └─ 過去24時間フィルタリング
 
-Phase 4（予定）
+Phase 4（完了）
   Gemini API で要約・HTML生成
   ├─ 各記事を2〜3行の日本語サマリーに変換
   └─ index.html を生成（mockup.html ベース）
 
-Phase 5（予定）
+Phase 5（完了）
   GitHub Pages デプロイ設定
   ├─ gh-pages ブランチへの自動プッシュ
   └─ GitHub Pages 有効化
 
-Phase 6（予定）
+Phase 6（完了）
   Gmail 通知スクリプト作成
   ├─ nodemailer でURLを自分宛てに送信
   └─ エラーハンドリング追加
 
-Phase 7（予定）
+Phase 7（完了）
   GitHub Actions ワークフロー構築・動作確認
   ├─ cron スケジュール設定（毎朝 7:00 JST）
   └─ Secrets 設定・end-to-end テスト
