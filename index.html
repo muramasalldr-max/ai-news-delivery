@@ -92,7 +92,7 @@
           <h1 class="text-white text-3xl font-bold tracking-tight leading-none">
             今日のAIニュース
           </h1>
-          <p class="text-brand-200/60 text-sm mt-2 font-light">2026年7月18日(土)</p>
+          <p class="text-brand-200/60 text-sm mt-2 font-light">2026年7月19日(日)</p>
         </div>
 
         <!-- AI icon badge -->
@@ -130,14 +130,16 @@
         <div class="px-5 pb-4">
           <div class="flex items-start justify-between gap-3 mb-2">
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
-            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">6時間前</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">7時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">WorkflowBench 開発日記 #001.  「そろそろ失敗を覚えてくれ」と思った話</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">WorkflowBenchは、仕様策定とプロトタイプ検証段階にあるプロジェクトです。AIが不完全な出力を繰り返し、人間が都度プロンプト修正を行う非効率を課題視し、AIが失敗を学習して業務を完結させる仕組みを目指しています。</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">「出したつもり」と「本当に読める」は別だった：AMA-terasの公開台帳を直した話</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">導入
+AMA-teras は Electron 製のデスクトップ AI コーディングエージェントです。
+対話しながら、計画、実装、デバッグ、テストを進めます。生成物は隔離した git worktree</p>
         </div>
         <div class="px-5 py-2.5 bg-brand-50 border-brand-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/kuma18/articles/de4722a760566a" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/moriwo_dev_ai/articles/ama-teras-202607191219" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -153,14 +155,19 @@
         <div class="px-5 py-4">
           <div class="flex items-start justify-between gap-3 mb-2">
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
-            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">6時間前</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">7時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">AIに記憶を持たせる：Locus Systemの目標と現在の仕組み</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">Locus Systemは、異なるAI間で分断された会話や作業履歴を統合する個人用記憶システムです。全履歴を文脈として保存・想起させることで、利用者が意識せずとも別のAIで自然に作業を継続できる環境の実現を目指しています。</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">「成功しました」を信用しないAIコーディングエージェントを作る</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">導入: AMA-terasが目指しているもの
+AMA-teras は、Electron 製のデスクトップ AI コーディングエージェントです。
+対話しながら、次の流れを進めます。
+
+計画する
+実装する</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/yumeno/articles/locus-system-overview" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/moriwo_dev_ai/articles/ai-202607191221" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -178,12 +185,12 @@
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
             <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">7時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">複数工場の状態を単一台帳へ集約する - 障害分析</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">自動処理の安定化に向け、障害分析の観点から業務オブジェクトごとに単一の正本台帳を構築する。入力から公開までの各工程を個別に記録して処理完了と目的達成を分離し、証拠に基づき処理を再開できる仕組みを整える。</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">2つのAIエージェントが同じファイルを編集—PR衝突をmerge前に見るGitHub App</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">複数のAI coding agentが並列でPRを作成する際、同一ファイルへの編集による衝突や不整合の発生が課題となっている。本記事では、マージ前にPR間の競合を検知・可視化し、開発効率を向上させるGitHub Appを紹介している。</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/kmn/articles/c78a05835ba810" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/veripsa/articles/two-ai-agents-same-file-pr-collision-before-merge" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -201,12 +208,13 @@
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
             <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">7時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">AI-DLC v1学習記　AI-DLCって何？どんな感じに開発が進むの？ INCEPTION編</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">AI-DLC v1のワークフローを用い、「紅茶検定初級編対策アプリ」の開発に着手した学習記録です。AIサブスクリプションの有効活用を目的とし、自身の興味をテーマにINCEPTIONフェーズから開発工程を実践しています。</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">Slack・Teams・Chatworkに同時対応するAIエージェントの作り方</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">Slack、Teams、Chatworkに対応するAIエージェントの設計方針。
+単なるAPI追加ではなく、各ツールの仕様差異を整理した上で、マルチプラットフォーム化を実現する実践的な実装手法を解説している。</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/tom1414/articles/112284e90afa57" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/hach/articles/multi-chat-adapter-design" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -222,14 +230,14 @@
         <div class="px-5 py-4">
           <div class="flex items-start justify-between gap-3 mb-2">
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
-            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">8時間前</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">7時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">Claude Code でWeb制作フローを13コマンドに仕組み化した話</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">AstroでのWeb制作フローをClaude Codeの13コマンドで仕組み化した事例。CLAUDE.mdや外部ガイドラインを活用し、AIへの丸投げを避けつつ適切な粒度で設計することで、実務における制作効率と安定性の向上を実現しています。</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">チャットに常駐するAIエージェントのプロンプトインジェクション対策</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">チャット常駐型AIエージェントは、指示と外部データが混在するテキストを処理するため、プロンプトインジェクションの脆弱性を抱えています。指示とデータの境界を明確にするなど、安全なエージェントを設計するための実装手法を解説しています。</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/nyacoai/articles/c8f5e8a31162a9" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/hach/articles/chat-agent-prompt-injection-defense" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -247,12 +255,12 @@
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
             <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">8時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">AIを自分のプロダクトに載せるとき、避けて通れない3つ。鍵・財布・出力の設計</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">AIプロダクト開発では、API鍵の管理、利用料金の上限設定、出力の信頼性設計の3点が不可欠です。これらは後付けではなく、開発初期に決定すべき根幹的な設計事項であり、実装における重要な判断基準となります。</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">軽量なセルフホストWiki「LeafWiki」を紹介します！</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">LeafWikiは、個人や小規模チーム向けの軽量なセルフホスト型Wikiツールです。単一バイナリで提供されるため、データベース等の複雑な設定を必要とせず、手軽に導入・運用できる点を最大の特徴としています。</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/rapls/articles/745b3a4003f686" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/dailydevadv/articles/2da062f824a2ff" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -268,15 +276,15 @@
         <div class="px-5 py-4">
           <div class="flex items-start justify-between gap-3 mb-2">
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
-            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">8時間前</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">誰か代わりに俺の記事を書いてほしい</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">要約
-今回作ったのは、今後の記事執筆という手間しかかからない作業を、AIに自動で、しかも自分が納得できる品質で任せられるようにする仕様書だ。その仕様書自体を作る過程にも、すでにAIを使っている。過去に</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2"># 用途で選ぶAI画像生成ツール4選｜商品画像・ゲームキャラ・ケモノ・版画を作成</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">AI画像を作りたいと思っても、自由度の高い生成画面では「何を入力すればよいのか分からない」と迷うことがあります。そんなときに便利なのが、目的別に作例やプロンプトが用意されたAI画像生成ツールです。
+今</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/appleple/articles/f22572df36518d" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/midjourneysref/articles/bedf19b8f00835" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -292,17 +300,16 @@
         <div class="px-5 py-4">
           <div class="flex items-start justify-between gap-3 mb-2">
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
-            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">8時間前</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">ループエンジニアリングの次は本当に「グラフ」なのか考えてみた</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">📋 この記事の前提
-
-前回記事「ループエンジニアリングをGitHub Copilotで組めるか調べてみた」を読んでいると話が早い
-「ハーネスエンジニアリング」「ループエンジニアリング」という言葉を見</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">Drift: 仕様とコードの同期を自動化する AI時代のSDD支援 ツール</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">はじめに
+ソフトウェア開発において、仕様とコードの乖離は深刻な問題です。仕様が更新されたのに実装が追従されない、あるいはその逆で、どちらが正しい状態なのか不明確になることも少なくありません。
+こうした</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/jodycraft/articles/dfe38e73e1ef8a" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/arupaka_sho/articles/drift_spec_code_sync_tool" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -318,16 +325,15 @@
         <div class="px-5 py-4">
           <div class="flex items-start justify-between gap-3 mb-2">
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
-            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">8時間前</span>
+            <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">外部記憶があると Claude Code の /compact はほぼ要らない</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">同じことを 2 回やっていないか
-Claude Code でいくつかのセッションを回していて、ふと気づいた。
-作業を終えるとき、筆者の環境では重要な決定を外部記憶に保存し、セッション全体も要約してから</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">直列処理とグラフ処理の境界線</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">AIエージェントのワークフローを作っていると、早い段階で「これはグラフ処理で書くべきでは？」と思う瞬間があります。
+分岐がある。聞き返しがある。人間承認がある。途中で別のツールに渡したい。最後は共通の</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/cloto/articles/claude-code-compact-external-memory" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/53able/articles/7fc78bdb6e0a40" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -345,16 +351,12 @@ Claude Code でいくつかのセッションを回していて、ふと気づ�
             <span class="source-zenn text-[10px] font-medium px-2 py-0.5 rounded-full border tracking-wide flex-shrink-0 mt-0.5">Zenn</span>
             <span class="text-[10px] text-slate-400 flex-shrink-0 mt-0.5">9時間前</span>
           </div>
-          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">AIに人間用GUIを操作させるな！～正しいMCP活用法について～</h2>
-          <p class="text-slate-500 text-[13px] leading-relaxed">～あなたのMCP活用、間違ってませんか～
-かなり乱暴なことを言う。
-GUIは、たいてい非本質である。
-GUIは、人間がソフトウェアを使うための操作盤だ。
-どこに何の機能があるかをメニューで示し、ボタン</p>
+          <h2 class="text-slate-800 font-bold text-[15px] leading-snug mb-2">コードエージェントにおけるファイルメンションの神話</h2>
+          <p class="text-slate-500 text-[13px] leading-relaxed">この記事は「The Mention File Myth in Code Agents」の日本語版です。原文は私自身が書いたものですが、文章の再構成と推敲には GLM 5.6 を使いました。元になった調</p>
         </div>
         <div class="px-5 py-2.5 bg-slate-50 border-slate-100 border-t flex items-center justify-between">
           <span class="text-[11px] text-slate-400">Zenn</span>
-          <a href="https://zenn.dev/renburu/articles/e7fbee59ecf633" target="_blank" rel="noopener noreferrer"
+          <a href="https://zenn.dev/ml/articles/1f47b168d0f85e" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-1.5 text-brand-700 text-[12px] font-semibold bg-brand-100 hover:bg-brand-200 px-3 py-1.5 rounded-lg transition-colors">
             記事を読む
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
